@@ -12,15 +12,12 @@ class Cliente(db.Model):
     telefone = db.Column(db.String(11))
     enderecoLogradouro = db.Column(db.String(100))
     enderecoBairro = db.Column(db.String(40))
-
     cidade_id = db.Column(db.Integer, db.ForeignKey('cidade.id'), nullable=False )
-    uf_id = db.Column(db.Integer, db.ForeignKey('uf.id'), nullable=False)
     enderecoNumero = db.Column(db.Integer)
     enderecoComplemento = db.Column(db.String(60))
     enderecoTipo = db.Column(db.String(20))
 
     cidade = db.relationship('Cidade')
-    uf = db.relationship('Uf')
       
     def to_json(self):
         json_clientes = {
@@ -32,7 +29,7 @@ class Cliente(db.Model):
             'enderecoLogradouro': self.enderecoLogradouro,
             'enderecoBairro': self.enderecoBairro,
             'cidade_id': self.cidade_id,
-            'uf_id': self.uf_id,
+   
             'enderecoNumero': self.enderecoNumero,
             'enderecoComplemento': self.enderecoComplemento,
             'enderecoTipo' : self.enderecoTipo,
@@ -51,11 +48,11 @@ class Cliente(db.Model):
         enderecoLogradouro = json_clientes.get('enderecoLogradouro')
         enderecoBairro = json_clientes.get('enderecoBairro')
         cidade_id = json_clientes.get('cidade_id')
-        uf_id = json_clientes.get('uf_id')
+        
         enderecoNumero = json_clientes.get('enderecoNumero')
         enderecoComplemento = json_clientes.get('enderecoComplemento')
         enderecoTipo = json_clientes.get('enderecoTipo')
         return Cliente(id=id, nome=nome, cpf=cpf, email=email, senha=senha_md5, telefone=telefone,
                        enderecoLogradouro=enderecoLogradouro, enderecoBairro=enderecoBairro,
-                        cidade_id=cidade_id,uf_id=uf_id, enderecoNumero=enderecoNumero,
+                        cidade_id=cidade_id, enderecoNumero=enderecoNumero,
                          enderecoComplemento=enderecoComplemento, enderecoTipo=enderecoTipo)

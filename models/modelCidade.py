@@ -10,7 +10,6 @@ class Cidade(db.Model):
     uf = db.relationship('Uf')
     
     
-    
     def to_json(self):
         json_cidades = {
             'id' : self.id,

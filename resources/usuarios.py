@@ -8,6 +8,7 @@ from blacklist import blacklist
 
 usuarios = Blueprint('usuarios', __name__)
 
+# flask_jwt_extended version 3
 
 @usuarios.route('/usuarios')
 def listagem():
@@ -27,7 +28,6 @@ def adicionar():
 def login():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
-
     email = request.json.get('email', None)
     senha = request.json.get('senha', None)
     if not email:

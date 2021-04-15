@@ -1,5 +1,7 @@
 from banco import db
 from datetime import datetime
+from sqlalchemy.orm import relationship
+
     
 class Produto(db.Model):
     __tablename__ = 'produtos'
@@ -16,18 +18,15 @@ class Produto(db.Model):
     porcentagem = db.Column(db.Integer)
     valor_venda = db.Column(db.Float, nullable=False)
     peso = db.Column(db.Float)
-    fornecedor_id = db.Column(db.Integer, db.ForeignKey(
-        'fornecedores.id'), nullable=False)
-    marca_id = db.Column(db.Integer, db.ForeignKey(
-        'marcas.id'), nullable=False)
-    categoria_id = db.Column(db.Integer, db.ForeignKey(
-        'categorias.id'), nullable=False)
     destaque = db.Column(db.String(1))
+    marca_id = db.Column(db.Integer)
+    categoria_id = db.Column(db.Integer)
+    fornecedor_id = db.Column(db.Integer)
 
-    fornecedor = db.relationship('Fornecedor')
-    marca = db.relationship('Marca')
-    categoria = db.relationship('Categoria')
-
+    marca = relationship('Marca', secondary='produto_marca')
+    categoria = relationship('Categoria', secondary='produto_categoria')
+    fornecedor = relationship('Fornecedor', secondary='produto_fornecedor')
+    
     def to_json(self):
         json_produtos = {
             'id': self.id,

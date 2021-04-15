@@ -1,0 +1,24 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "api app ferrageiro",
+  "main": "app.py",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robertopinho/Ferrageiro-API.git"
+  },
+  "author": "Roberto Pinho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robertopinho/Ferrageiro-API/issues"
+  },
+  "homepage": "https://github.com/robertopinho/Ferrageiro-API#readme",
+  "dependencies": {
+    "flask": "^0.2.10",
+    "jsonify": "0.0.0",
+    "python": "0.0.4"
+  }
+}
