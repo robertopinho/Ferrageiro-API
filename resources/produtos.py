@@ -6,7 +6,7 @@ from flask_cors import CORS
 produtos = Blueprint('produtos', __name__)
 
 # @produtos.route('/produto', methods=['POST'])
-# def adicionar():
+# def add():
 #     produto = Produto.from_json(request.json)
 #     db.session.add(produto)
 #     db.session.commit()

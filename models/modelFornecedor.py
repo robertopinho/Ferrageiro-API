@@ -13,10 +13,7 @@ class Fornecedor(db.Model):
     telefone_representante = db.Column(db.String(15), nullable=False)
     email_representante = db.Column(db.String(60), nullable=False)
     cidade_id = db.Column(db.Integer, db.ForeignKey('cidade.id') )
-    cidade = db.relationship('Cidade')
-
-    # produtos = relationship('Produto', secondary='produto_fornecedor')
-    
+    cidade = db.relationship('Cidade')  
     
     def to_json(self):
         json_fornecedor = {
@@ -29,7 +26,6 @@ class Fornecedor(db.Model):
             'telefone_representante': self.telefone_representante,
             'email_representante': self.email_representante,
             'cidade_id' : self.cidade_id,
-
         }
         return json_fornecedor
 

@@ -10,12 +10,12 @@ class Cliente(db.Model):
     email = db.Column(db.String(120), nullable=False, unique=True)
     senha = db.Column(db.String(32), nullable=False)
     telefone = db.Column(db.String(11))
-    enderecoLogradouro = db.Column(db.String(100))
-    enderecoBairro = db.Column(db.String(40))
+    endereco_logradouro = db.Column(db.String(100))
+    endereco_bairro = db.Column(db.String(40))
     cidade_id = db.Column(db.Integer, db.ForeignKey('cidade.id'), nullable=False )
-    enderecoNumero = db.Column(db.Integer)
-    enderecoComplemento = db.Column(db.String(60))
-    enderecoTipo = db.Column(db.String(20))
+    endereco_numero = db.Column(db.Integer)
+    endereco_complemento = db.Column(db.String(60))
+    endereco_tipo = db.Column(db.String(20))
 
     cidade = db.relationship('Cidade')
       
@@ -26,13 +26,13 @@ class Cliente(db.Model):
             'cpf': self.cpf,
             'email': self.email,
             'telefone': self.telefone,
-            'enderecoLogradouro': self.enderecoLogradouro,
-            'enderecoBairro': self.enderecoBairro,
+            'endereco_logradouro': self.endereco_logradouro,
+            'endereco_bairro': self.endereco_bairro,
             'cidade_id': self.cidade_id,
    
-            'enderecoNumero': self.enderecoNumero,
-            'enderecoComplemento': self.enderecoComplemento,
-            'enderecoTipo' : self.enderecoTipo,
+            'endereco_numero': self.endereco_numero,
+            'endereco_complemento': self.endereco_complemento,
+            'endereco_tipo' : self.endereco_tipo,
         }
         return json_clientes
 
@@ -45,14 +45,14 @@ class Cliente(db.Model):
         senha = json_clientes.get('senha') + config.SALT
         senha_md5 = hashlib.md5(senha.encode()).hexdigest()
         telefone = json_clientes.get('telefone')
-        enderecoLogradouro = json_clientes.get('enderecoLogradouro')
-        enderecoBairro = json_clientes.get('enderecoBairro')
+        endereco_logradouro = json_clientes.get('endereco_logradouro')
+        endereco_bairro = json_clientes.get('endereco_bairro')
         cidade_id = json_clientes.get('cidade_id')
         
-        enderecoNumero = json_clientes.get('enderecoNumero')
-        enderecoComplemento = json_clientes.get('enderecoComplemento')
-        enderecoTipo = json_clientes.get('enderecoTipo')
+        endereco_numero = json_clientes.get('endereco_numero')
+        endereco_complemento = json_clientes.get('endereco_complemento')
+        endereco_tipo = json_clientes.get('endereco_tipo')
         return Cliente(id=id, nome=nome, cpf=cpf, email=email, senha=senha_md5, telefone=telefone,
-                       enderecoLogradouro=enderecoLogradouro, enderecoBairro=enderecoBairro,
-                        cidade_id=cidade_id, enderecoNumero=enderecoNumero,
-                         enderecoComplemento=enderecoComplemento, enderecoTipo=enderecoTipo)
+                       endereco_logradouro=endereco_logradouro, endereco_bairro=endereco_bairro,
+                        cidade_id=cidade_id, endereco_numero=endereco_numero,
+                         endereco_complemento=endereco_complemento, endereco_tipo=endereco_tipo)

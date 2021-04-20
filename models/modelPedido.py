@@ -7,7 +7,7 @@ class Pedido(db.Model):
     data_entrega = db.Column(db.DateTime, nullable=False, default=datetime.now)
     #valor_entrega = db.Column(db.DateTime, nullable=False, default=datetime.now)
     desconto = db.Column(db.Float)
-    valor_total = db.Column(db.Float, nullable=False)
+    valor = db.Column(db.Float, nullable=False)
     status = db.Column(db.String(10), nullable=False)
     observacao = db.Column(db.String(200))
     id_cliente = db.Column(db.Integer, db.ForeignKey('clientes.id'), nullable=False)
@@ -22,7 +22,7 @@ class Pedido(db.Model):
             'data_compra': self.data_compra,
             'data_entrega': self.data_entrega,
             'desconto': self.desconto,
-            'valor_total': self.valor_total,
+            'valor': self.valor,
             'status': self.status,
             'observacao': self.observacao,
             'id_cliente': self.id_cliente , 
@@ -39,8 +39,8 @@ class Pedido(db.Model):
         desconto = json_pedido.get('desconto')
         status = json_pedido.get('status')
         observacao = json_pedido.get('observacao')
-        valor_total = json_pedido.get('valor_total')
+        valor = json_pedido.get('valor')
         id_usuario = json_pedido.get('id_usuario')
     
 
-        return Pedido(id=id, data_compra=data_compra, data_entrega=data_entrega, id_cliente=id_cliente, desconto=desconto,status=status,observacao=observacao, valor_total=valor_total, id_usuario=id_usuario)
+        return Pedido(id=id, data_compra=data_compra, data_entrega=data_entrega, id_cliente=id_cliente, desconto=desconto,status=status,observacao=observacao, valor=valor, id_usuario=id_usuario)

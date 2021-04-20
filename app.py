@@ -11,11 +11,11 @@ from resources.usuarios import usuarios
 from resources.clientes import clientes
 from resources.pedidos import pedido
 from resources.uf import uf
-from resources.carrinho import carrinho
+from resources.produto_pedido import carrinho
 from resources.cidades import cidade
-from resources.produto_caterogia import produto_categoria
-from resources.produto_fornecedor import produto_fornecedor
-from resources.produto_marca import produto_marca
+# from resources.produto_caterogia import produto_categoria
+# from resources.produto_fornecedor import produto_fornecedor
+# from resources.produto_marca import produto_marca
 
 
 
@@ -35,9 +35,9 @@ app.register_blueprint(uf)
 app.register_blueprint(cidade)
 app.register_blueprint(carrinho)
 app.register_blueprint(pedido)
-app.register_blueprint(produto_marca)
-app.register_blueprint(produto_fornecedor)
-app.register_blueprint(produto_categoria)
+# app.register_blueprint(produto_marca)
+# app.register_blueprint(produto_fornecedor)
+# app.register_blueprint(produto_categoria)
 
 
 @app.route('/')

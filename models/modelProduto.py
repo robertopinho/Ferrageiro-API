@@ -6,8 +6,7 @@ from sqlalchemy.orm import relationship
 class Produto(db.Model):
     __tablename__ = 'produtos'
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    data_compra = db.Column(db.DateTime, nullable=False,
-                            default=datetime.utcnow)
+    data_compra = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     nome = db.Column(db.String(200), nullable=False)
     descricao = db.Column(db.String(200))
     imagem = db.Column(db.String(300))
@@ -19,13 +18,13 @@ class Produto(db.Model):
     valor_venda = db.Column(db.Float, nullable=False)
     peso = db.Column(db.Float)
     destaque = db.Column(db.String(1))
-    marca_id = db.Column(db.Integer)
-    categoria_id = db.Column(db.Integer)
-    fornecedor_id = db.Column(db.Integer)
+    marca_id = db.Column(db.Integer, db.ForeignKey('marcas.id'))
+    categoria_id = db.Column(db.Integer, db.ForeignKey('categorias.id'))
+    fornecedor_id = db.Column(db.Integer, db.ForeignKey('fornecedores.id'))
 
-    marca = relationship('Marca', secondary='produto_marca')
-    categoria = relationship('Categoria', secondary='produto_categoria')
-    fornecedor = relationship('Fornecedor', secondary='produto_fornecedor')
+    marca = relationship('Marca')
+    categoria = relationship('Categoria')
+    fornecedor = relationship('Fornecedor')
     
     def to_json(self):
         json_produtos = {

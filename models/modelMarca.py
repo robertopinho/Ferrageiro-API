@@ -5,8 +5,6 @@ class Marca(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     nome = db.Column(db.String(30), nullable=False)
 
-    produtos = relationship('Produto', secondary='produto_marca')
-
     def to_json(self):
         json_marcas = {
             'id': self.id,
